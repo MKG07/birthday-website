@@ -1,0 +1,777 @@
+/* ============================================
+   BIRTHDAY WEBSITE STYLES - MOBILE OPTIMIZED
+   ============================================ */
+
+/* CSS Variables for easy customization */
+:root {
+    /* ✏️ CUSTOMIZE COLORS HERE */
+    --primary-pink: #ff9a9e;
+    --secondary-pink: #fecfef;
+    --accent-purple: #a18cd1;
+    --accent-blue: #fbc2eb;
+    --text-dark: #4a4a4a;
+    --text-light: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 15px 50px rgba(0, 0, 0, 0.15);
+    
+    /* Mobile-specific variables */
+    --touch-target: 48px;
+    --mobile-padding: 1rem;
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Prevent text size adjustment on orientation change */
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--secondary-pink) 50%, var(--accent-blue) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Improve font rendering on mobile */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility - Screen reader only */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Confetti Canvas */
+#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* ============================================
+   BACKGROUND VIDEO
+   ============================================ */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    filter: blur(2px) brightness(0.7);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(255, 154, 158, 0.5) 0%, 
+        rgba(254, 207, 239, 0.5) 50%, 
+        rgba(251, 194, 235, 0.5) 100%);
+    z-index: -1;
+}
+
+/* ============================================
+   MUSIC PLAYER - MOBILE OPTIMIZED
+   ============================================ */
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.music-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, var(--primary-pink), var(--accent-purple));
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    /* Prevent double-tap zoom on iOS */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.music-btn:hover,
+.music-btn:focus {
+    transform: scale(1.1);
+    outline: none;
+}
+
+.music-btn:active {
+    transform: scale(0.95);
+}
+
+.music-btn:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+.music-btn.playing {
+    animation: pulse-music 1s ease-in-out infinite;
+}
+
+@keyframes pulse-music {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* ============================================
+   HERO SECTION - MOBILE OPTIMIZED
+   ============================================ */
+.hero {
+    min-height: 100vh;
+    /* Fix for mobile browsers with dynamic toolbars */
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 1;
+    animation: fadeInUp 1s ease-out;
+    max-width: 100%;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    color: var(--text-light);
+    text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+    animation: pulse 2s ease-in-out infinite;
+    word-wrap: break-word;
+}
+
+.hero-title .name {
+    display: inline-block;
+    background: linear-gradient(45deg, #fff, #ffe4e8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tagline {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: var(--text-light);
+    opacity: 0.95;
+    margin-top: 0.5rem;
+    animation: fadeIn 1.5s ease-out 0.5s both;
+}
+
+/* Floating Hearts & Balloons */
+.floating-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.heart, .balloon {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 4s ease-in-out infinite;
+}
+
+.heart:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { top: 60%; left: 85%; animation-delay: 1s; }
+.heart:nth-child(3) { top: 80%; left: 20%; animation-delay: 2s; }
+.balloon:nth-child(4) { top: 30%; left: 80%; animation-delay: 0.5s; font-size: 3rem; }
+.balloon:nth-child(5) { top: 70%; left: 5%; animation-delay: 1.5s; font-size: 2.5rem; }
+
+/* Scroll Hint */
+.scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    font-size: 2rem;
+    color: var(--text-light);
+    opacity: 0.8;
+}
+
+/* ============================================
+   SECTION STYLES
+   ============================================ */
+section {
+    padding: 4rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--text-light);
+    text-shadow: 1px 2px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 3rem;
+    word-wrap: break-word;
+}
+
+/* ============================================
+   18 REASONS SECTION
+   ============================================ */
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.reason-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    /* Better touch interaction */
+    touch-action: manipulation;
+}
+
+.reason-card.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Desktop hover only */
+@media (hover: hover) and (pointer: fine) {
+    .reason-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: var(--shadow-hover);
+    }
+}
+
+.reason-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-pink), var(--accent-purple));
+}
+
+.reason-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-pink), var(--accent-purple));
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.reason-card p {
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+/* ============================================
+   PHOTO CAROUSEL - MOBILE OPTIMIZED
+   ============================================ */
+.gallery {
+    padding-bottom: 5rem;
+}
+
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.carousel-container {
+    overflow: hidden;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
+    /* Prevent scrolling issues on mobile */
+    -webkit-overflow-scrolling: touch;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Prevent lag on mobile */
+    will-change: transform;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+    display: block;
+    background: rgba(0, 0, 0, 0.1);
+    /* Prevent image dragging on mobile */
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Carousel Navigation Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--card-bg);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    z-index: 10;
+    /* Better touch targets */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.9);
+}
+
+/* Desktop hover only */
+@media (hover: hover) and (pointer: fine) {
+    .carousel-btn:hover,
+    .carousel-btn:focus {
+        background: var(--primary-pink);
+        color: white;
+        outline: none;
+        transform: translateY(-50%) scale(1.1);
+    }
+}
+
+.carousel-btn:focus-visible {
+    outline: 3px solid var(--accent-purple);
+    outline-offset: 2px;
+}
+
+.carousel-btn.prev { left: -25px; }
+.carousel-btn.next { right: -25px; }
+
+/* Carousel Dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Better touch targets */
+    padding: 8px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-dot:active {
+    transform: scale(0.9);
+}
+
+/* Desktop hover only */
+@media (hover: hover) and (pointer: fine) {
+    .carousel-dot:hover,
+    .carousel-dot:focus {
+        background: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.carousel-dot.active {
+    background: white;
+    transform: scale(1.3);
+}
+
+.carousel-dot:focus-visible {
+    outline: 2px solid var(--accent-purple);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   LETTER SECTION - MOBILE OPTIMIZED
+   ============================================ */
+.letter-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.letter-paper {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    min-height: 400px;
+}
+
+.letter-paper::before {
+    content: '💌';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+}
+
+.typewriter {
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.8;
+    white-space: pre-wrap;
+    color: var(--text-dark);
+    word-wrap: break-word;
+}
+
+.typewriter .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background: var(--primary-pink);
+    margin-left: 2px;
+    animation: blink 0.7s infinite;
+    vertical-align: text-bottom;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-light);
+    opacity: 0.9;
+}
+
+.footer p {
+    margin: 0.5rem 0;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-15px); }
+    60% { transform: translateX(-50%) translateY(-7px); }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ============================================ */
+
+/* Tablets and smaller desktops */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+    
+    .floating-hearts .heart,
+    .floating-hearts .balloon {
+        font-size: 1.5rem;
+    }
+    
+    .balloon:nth-child(4),
+    .balloon:nth-child(5) {
+        font-size: 2rem !important;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    :root {
+        --mobile-padding: 1rem;
+    }
+    
+    section {
+        padding: 3rem var(--mobile-padding);
+    }
+    
+    /* Larger touch targets on mobile */
+    .music-btn {
+        width: 64px;
+        height: 64px;
+        font-size: 1.6rem;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    /* Carousel adjustments */
+    .carousel-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+    }
+    
+    .carousel-btn.prev { 
+        left: 5px; 
+    }
+    
+    .carousel-btn.next { 
+        right: 5px; 
+    }
+    
+    .carousel-slide img {
+        max-height: 400px;
+    }
+    
+    /* Letter adjustments */
+    .letter-paper {
+        padding: 1.5rem;
+        min-height: 300px;
+    }
+    
+    .letter-paper::before {
+        font-size: 2rem;
+        top: -15px;
+    }
+    
+    /* Reason cards */
+    .reason-card {
+        padding: 1.25rem;
+    }
+    
+    .reasons-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    
+    /* Hide decorative elements on small screens */
+    .floating-hearts {
+        display: none;
+    }
+    
+    .scroll-hint {
+        font-size: 1.5rem;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    section {
+        padding: 2.5rem 0.75rem;
+    }
+    
+    .hero {
+        padding: 1rem 0.75rem;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.8rem, 10vw, 3rem);
+    }
+    
+    .tagline {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+    }
+    
+    .section-title {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+        margin-bottom: 2rem;
+    }
+    
+    .reason-card {
+        padding: 1rem;
+    }
+    
+    .reason-number {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .reason-card p {
+        font-size: 1rem;
+    }
+    
+    .letter-paper {
+        padding: 1.25rem;
+    }
+    
+    .typewriter {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    .carousel-dots {
+        gap: 8px;
+    }
+    
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+        padding: 6px;
+    }
+}
+
+/* Very small devices */
+@media (max-width: 360px) {
+    .music-btn {
+        width: 56px;
+        height: 56px;
+        font-size: 1.4rem;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Landscape mode on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 2rem 1rem;
+    }
+    
+    .scroll-hint {
+        display: none;
+    }
+    
+    .floating-hearts {
+        display: none;
+    }
+    
+    section {
+        padding: 2rem 1rem;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .video-background video {
+        filter: blur(1px) brightness(0.7);
+    }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+    
+    .carousel-track {
+        transition: none;
+    }
+}
+
+/* Dark mode support (if device prefers) */
+@media (prefers-color-scheme: dark) {
+    .card-bg {
+        --card-bg: rgba(255, 255, 255, 0.95);
+    }
+}

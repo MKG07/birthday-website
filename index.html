@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff9a9e">
+    <meta name="theme-color" content="#22223b" media="(prefers-color-scheme: dark)">
+    <meta name="msapplication-TileColor" content="#ff9a9e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Happy Birthday! A special website made just for you.">
+    
+    <!-- Prevent text size adjustment on orientation change -->
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Preload critical resources for better performance -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <title>Happy Birthday! 🎂</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Prevent zoom on input focus (iOS) -->
+    <style>
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <div class="video-background">
+        <!-- ✏️ ADD YOUR VIDEO: Place your .mp4 in the /videos folder -->
+        <video autoplay muted loop playsinline webkit-playsinline id="bgVideo" preload="auto">
+            <source src="videos/background.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-btn" aria-label="Play background music" type="button">
+            🎵
+        </button>
+        <!-- ✏️ ADD YOUR MUSIC: Place your .mp3 in the /music folder -->
+        <audio id="bgMusic" loop preload="metadata">
+            <source src="music/song.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti"></canvas>
+
+    <!-- Hero Section -->
+    <header class="hero" role="banner">
+        <div class="hero-content">
+            <!-- Floating decorations -->
+            <div class="floating-hearts" aria-hidden="true">
+                <span class="heart">💕</span>
+                <span class="heart">💖</span>
+                <span class="heart">💗</span>
+                <span class="balloon">🎈</span>
+                <span class="balloon">🎈</span>
+            </div>
+            
+            <!-- ✏️ CHANGE HER NAME BELOW -->
+            <h1 class="hero-title">Happy Birthday, <span class="name">Lisy</span>!</h1>
+            <p class="tagline">Welcome to the legal club 😂</p>
+            <div class="scroll-hint" aria-hidden="true">
+                <span>↓</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 18 Reasons Section -->
+    <section class="reasons" aria-labelledby="reasons-title">
+        <h2 id="reasons-title" class="section-title">18 Reasons Why I'm Happy I Met You</h2>
+        <div class="reasons-grid">
+            <!-- ✏️ CUSTOMIZE EACH REASON BELOW -->
+            <div class="reason-card" data-reason="1">
+                <span class="reason-number">1</span>
+                <p>Your smile (One of my weaknesses).</p>
+            </div>
+            <div class="reason-card" data-reason="2">
+                <span class="reason-number">2</span>
+                <p>You're funny (a lil 😂).</p>
+            </div>
+            <div class="reason-card" data-reason="3">
+                <span class="reason-number">3</span>
+                <p>You're truly beautiful, inside and out.</p>
+            </div>
+            <div class="reason-card" data-reason="4">
+                <span class="reason-number">4</span>
+                <p>I love your hair</p>
+            </div>
+            <div class="reason-card" data-reason="5">
+                <span class="reason-number">5</span>
+                <p>I love that you can sing... or so i've been told, but i believe it 😂.</p>
+            </div>
+            <div class="reason-card" data-reason="6">
+                <span class="reason-number">6</span>
+                <p>You're smart</p>
+            </div>
+            <div class="reason-card" data-reason="7">
+                <span class="reason-number">7</span>
+                <p>You're talented in more ways than one</p>
+            </div>
+            <div class="reason-card" data-reason="8">
+                <span class="reason-number">8</span>
+                <p>You care deeply about your family, and that says so much about your heart.</p>
+            </div>
+            <div class="reason-card" data-reason="9">
+                <span class="reason-number">9</span>
+                <p>You have real goals and you're driven enough to chase them.</p>
+            </div>
+            <div class="reason-card" data-reason="10">
+                <span class="reason-number">10</span>
+                <p>Talking to you makes me happy in a way i haven't felt in a minute.</p>
+            </div>
+            <div class="reason-card" data-reason="11">
+                <span class="reason-number">11</span>
+                <p>You make my heart flutter without even trying (Cheesy ik lol).</p>
+            </div>
+            <div class="reason-card" data-reason="12">
+                <span class="reason-number">12</span>
+                <p>You somehow bring out my soft side, which not many people do.</p>
+            </div>
+            <div class="reason-card" data-reason="13">
+                <span class="reason-number">13</span>
+                <p>You have a warmth about you that's easy to feel, even through messages.</p>
+            </div>
+            <div class="reason-card" data-reason="14">
+                <span class="reason-number">14</span>
+                <p>You make getting to know someone again feel exciting again.</p>
+            </div>
+            <div class="reason-card" data-reason="15">
+                <span class="reason-number">15</span>
+                <p>You're wonderfully weird (in the best way)</p>
+            </div>
+            <div class="reason-card" data-reason="16">
+                <span class="reason-number">16</span>
+                <p>You have this calm, comforting energy that feels good to be around.</p>
+            </div>
+            <div class="reason-card" data-reason="17">
+                <span class="reason-number">17</span>
+                <p>You make me look forward to conversations, no matter how my day is going.</p>
+            </div>
+            <div class="reason-card" data-reason="18">
+                <span class="reason-number">18</span>
+                <p>Because you're simply YOU and that's perfect 💕</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Carousel Section -->
+    <section class="gallery" aria-labelledby="gallery-title">
+        <h2 id="gallery-title" class="section-title">Our Beautiful Memories</h2>
+        <div class="carousel" role="region" aria-label="Photo carousel">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                  <!--   ✏️ ADD YOUR PHOTOS: Replace src with your image paths -->
+                    <!-- Place your images in the /images folder -->
+                    <!-- For better mobile performance, use optimized/compressed images -->
+                    <div class="carousel-slide">
+                        <img src="images/photo1.png" alt="Our first date together" loading="lazy" decoding="async">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo2.png" alt="Fun day at the beach" loading="lazy" decoding="async">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo3.png" alt="Celebrating together" loading="lazy" decoding="async">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo4.png" alt="Adventure time" loading="lazy" decoding="async">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/photo5.png" alt="Special moment" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </div> 
+            
+            <!-- Navigation arrows -->
+            <button class="carousel-btn prev" aria-label="Previous photo" type="button">❮</button>
+            <button class="carousel-btn next" aria-label="Next photo" type="button">❯</button>
+            
+            <!-- Dots navigation -->
+           <div class="carousel-dots" role="tablist" aria-label="Carousel navigation"></div>
+        </div>
+    </section>
+
+    <!-- Personal Letter Section -->
+    <section class="letter" aria-labelledby="letter-title">
+        <h2 id="letter-title" class="section-title">A Letter Just for You</h2>
+        <div class="letter-container">
+            <div class="letter-paper">
+                <!-- ✏️ CUSTOMIZE YOUR MESSAGE BELOW -->
+                <p class="typewriter" data-text="My dearest love,
+
+On this special day, I hope you know just how much you mean to me. Turning 18 is such a huge milestone, and I'm genuinely proud of the young woman you're becoming. I know this letter isn't much, but it's my way of showing you how much I care about you the old fashion way, even if it comes across a little cheesy, I honestly don't care lol.
+
+We haven't known each other personally for very long, but every moment so far has meant something to me, and I really want to keep getting to know you. I see great things in your future. You're so multitalented, and the way you love your family says so much about the kind of person you are. You deserve the world.
+
+Here's to your 18th birthday, to all the adventures ahead, all the dreams you'll chase, and everything incredible waiting for you.
+
+Happy birthday, beautiful! 🎂💕
+
+From Your Secret Admirer ❤️ "></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with 💕 just for you</p>
+        <!-- ✏️ CHANGE THE YEAR IF NEEDED -->
+        <p class="copyright">© 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
