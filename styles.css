@@ -580,7 +580,7 @@ section {
 /* High DPI displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .video-background video {
-        filter: blur(1px) brightness(0.7);
+        filter: blur(8px) brightness(0.7);
     }
 }
 
@@ -602,4 +602,5 @@ section {
     .card-bg {
         --card-bg: rgba(255, 255, 255, 0.95);
     }
+
 }
