@@ -96,7 +96,7 @@ body {
     height: auto;
     transform: translate(-50%, -50%);
     object-fit: cover;
-    filter: blur(2px) brightness(0.7);
+    filter: blur(8px) brightness(0.7);
 }
 
 .video-overlay {
