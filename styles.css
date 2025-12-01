@@ -328,139 +328,6 @@ section {
 }
 
 /* ============================================
-   PHOTO CAROUSEL - MOBILE OPTIMIZED
-   ============================================ */
-.gallery {
-    padding-bottom: 5rem;
-}
-
-.carousel {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.carousel-container {
-    overflow: hidden;
-    border-radius: 25px;
-    box-shadow: var(--shadow);
-    /* Prevent scrolling issues on mobile */
-    -webkit-overflow-scrolling: touch;
-}
-
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    /* Prevent lag on mobile */
-    will-change: transform;
-}
-
-.carousel-slide {
-    min-width: 100%;
-    position: relative;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: auto;
-    max-height: 600px;
-    object-fit: contain;
-    display: block;
-    background: rgba(0, 0, 0, 0.1);
-    /* Prevent image dragging on mobile */
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-/* Carousel Navigation Buttons */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--card-bg);
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-    z-index: 10;
-    /* Better touch targets */
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.carousel-btn:active {
-    transform: translateY(-50%) scale(0.9);
-}
-
-/* Desktop hover only */
-@media (hover: hover) and (pointer: fine) {
-    .carousel-btn:hover,
-    .carousel-btn:focus {
-        background: var(--primary-pink);
-        color: white;
-        outline: none;
-        transform: translateY(-50%) scale(1.1);
-    }
-}
-
-.carousel-btn:focus-visible {
-    outline: 3px solid var(--accent-purple);
-    outline-offset: 2px;
-}
-
-.carousel-btn.prev { left: -25px; }
-.carousel-btn.next { right: -25px; }
-
-/* Carousel Dots */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 1.5rem;
-}
-
-.carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    /* Better touch targets */
-    padding: 8px;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.carousel-dot:active {
-    transform: scale(0.9);
-}
-
-/* Desktop hover only */
-@media (hover: hover) and (pointer: fine) {
-    .carousel-dot:hover,
-    .carousel-dot:focus {
-        background: rgba(255, 255, 255, 0.8);
-    }
-}
-
-.carousel-dot.active {
-    background: white;
-    transform: scale(1.3);
-}
-
-.carousel-dot:focus-visible {
-    outline: 2px solid var(--accent-purple);
-    outline-offset: 2px;
-}
-
-/* ============================================
    LETTER SECTION - MOBILE OPTIMIZED
    ============================================ */
 .letter-container {
@@ -603,25 +470,6 @@ section {
         right: 15px;
     }
     
-    /* Carousel adjustments */
-    .carousel-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 1.3rem;
-    }
-    
-    .carousel-btn.prev { 
-        left: 5px; 
-    }
-    
-    .carousel-btn.next { 
-        right: 5px; 
-    }
-    
-    .carousel-slide img {
-        max-height: 400px;
-    }
-    
     /* Letter adjustments */
     .letter-paper {
         padding: 1.5rem;
@@ -698,16 +546,6 @@ section {
         font-size: 0.95rem;
         line-height: 1.7;
     }
-    
-    .carousel-dots {
-        gap: 8px;
-    }
-    
-    .carousel-dot {
-        width: 10px;
-        height: 10px;
-        padding: 6px;
-    }
 }
 
 /* Very small devices */
@@ -716,12 +554,6 @@ section {
         width: 56px;
         height: 56px;
         font-size: 1.4rem;
-    }
-    
-    .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1rem;
     }
 }
 
@@ -762,10 +594,6 @@ section {
     
     html {
         scroll-behavior: auto;
-    }
-    
-    .carousel-track {
-        transition: none;
     }
 }
 
